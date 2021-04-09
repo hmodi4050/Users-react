@@ -3,7 +3,7 @@ import mer from '../img/mrkaz.png'
 import cod from '../img/coden.png'
 import avo from '../img/avoda.png'
 import Link from '@material-ui/core/Link';
-import "../styles/Header.css";
+import '../styles/Header.css';
 
 export default function Header() {
     return (
