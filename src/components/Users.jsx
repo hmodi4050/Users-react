@@ -12,20 +12,27 @@ import PersonIcon from '@material-ui/icons/Person';
 import { Link } from 'react-router-dom'
 import PopUpCard from './PopUpCard'
 import '../styles/Users.css'
+import Data from '../users.json'
 
 // get data by api
 export default function Users() {
     const [users, setUsers] = useState([]);
     function getDataFromApi() {
-        fetch('https://next.json-generator.com/api/json/get/E1iKSS0bq')
-            .then(res => { return res.json() })
-            .then((jsonJs) => {
-                setUsers(jsonJs)
-            })
-            .catch((error) => {
-                throw error
-            })
+        // fetch('https://next.json-generator.com/api/json/get/E1iKSS0bq')
+        //fetch('https://jsonplaceholder.typicode.com/users')
+        /*
+             .then(res => { return res.json() })
+             .then((jsonJs) => {
+                 setUsers(jsonJs)
+             })
+             .catch((error) => {
+                 throw error
+             })*/
+        setUsers(Data)
     }
+
+
+
     useEffect(getDataFromApi, []);
     let imgArray = [pic1, pic2, pic3, pic4, pic5, pic6, pic7, pic8];
     let i = 0;
@@ -42,11 +49,11 @@ export default function Users() {
             <div id='containerDiv'>
                 <div> {users.map(item => (
                     <div id="cardsDiv">
-                        <UserCard name={item.name.first} lastName={item.name.last}
+                        <UserCard name={item.name} lastName={item.name.last}
                             age={item.age} email={item.email} pic={imgArray[i++]} />
-                        <PopUpCard name={item.name.first} lastName={item.name.last}
-                            age={item.age} email={item.email} company={item.company}
-                            phone={item.phone} address={item.address} pic={imgArray[j++]} />
+                        <PopUpCard name={item.name} lastName={item.name.last}
+                            age={item.age} email={item.email} company={item.company.name}
+                            phone={item.phone} address={item.address.street} pic={imgArray[j++]} />
                     </div>))}
                 </div>
             </div>
